@@ -36,13 +36,14 @@ const NewTransactionForm = () => {
 				maxW={'300px'}
 				m={'1rem'}
 				p={'1rem'}
-				border={'1px solid white'}
+				border={'1px solid #ccc'}
 				isRequired
 			>
-				<Heading fontSize={"1.5rem"} textAlign={'center'} p={"1rem"}>Add New Transaction</Heading>
+				<Heading fontSize={'1.5rem'} textAlign={'center'} p={'1rem'}>
+					Add New Transaction
+				</Heading>
 
 				<VStack mb={'1rem'}>
-				
 					<FormLabel>Date</FormLabel>
 					<Input
 						type="date"
@@ -51,7 +52,7 @@ const NewTransactionForm = () => {
 						required
 					/>
 				</VStack>
-				
+
 				<VStack mb={'1rem'}>
 					<FormLabel>Description</FormLabel>
 					<Input
@@ -61,7 +62,7 @@ const NewTransactionForm = () => {
 						isRequired={true}
 					/>
 				</VStack>
-				
+
 				<VStack mb={'1rem'}>
 					<FormLabel>Category</FormLabel>
 					<Input
@@ -71,7 +72,7 @@ const NewTransactionForm = () => {
 						required
 					/>
 				</VStack>
-				
+
 				<VStack mb={'1rem'}>
 					<FormLabel>Amount</FormLabel>
 					<Input
@@ -81,9 +82,9 @@ const NewTransactionForm = () => {
 						required
 					/>
 				</VStack>
-				
+
 				<Button mb={'1rem'} onClick={handleSubmit}>
-					Add New Transaction
+					Add Transaction
 				</Button>
 			</FormControl>
 		</>

@@ -1,10 +1,17 @@
-import { Heading, HStack } from '@chakra-ui/react';
+import { Heading, HStack, Flex } from '@chakra-ui/react';
 import { BiSolidBank } from 'react-icons/bi';
 import SearchBar from './SearchBar';
 
 const Header = ({ title, transactions, search, setSearch }) => {
 	return (
-		<HStack justify={'space-between'}>
+		<Flex
+			justify={'space-between'}
+			align={'center'}
+			direction={{
+				base: 'column',
+				md: 'row',
+			}}
+		>
 			<HStack p={'2rem'}>
 				<Heading>{title}</Heading>
 				<BiSolidBank size="3rem" />
@@ -15,7 +22,7 @@ const Header = ({ title, transactions, search, setSearch }) => {
 				setSearch={setSearch}
 				search={search}
 			/>
-		</HStack>
+		</Flex>
 	);
 };
 

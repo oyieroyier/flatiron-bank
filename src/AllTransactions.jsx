@@ -19,7 +19,13 @@ const AllTransactions = ({ transactions }) => {
 	}
 
 	return (
-		<TableContainer px="2rem" flex="3">
+		<TableContainer
+			px={{
+				base: '0',
+				md: '2rem',
+			}}
+			flex="3"
+		>
 			<Table variant={'striped'}>
 				<TableCaption>All Transactions</TableCaption>
 				<Thead>
