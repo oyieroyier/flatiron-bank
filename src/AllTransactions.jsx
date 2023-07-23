@@ -10,8 +10,9 @@ import {
 	Button,
 } from '@chakra-ui/react';
 import { baseURL, tableHeads } from './constants';
+import LoadingState from './LoadingState';
 
-const AllTransactions = ({ transactions }) => {
+const AllTransactions = ({ transactions, loading }) => {
 	function deleteTransaction(id) {
 		fetch(`${baseURL}/${id}`, {
 			method: 'DELETE',
@@ -37,22 +38,26 @@ const AllTransactions = ({ transactions }) => {
 				</Thead>
 
 				<Tbody>
-					{transactions.map((transaction) => (
-						<Tr key={transaction.id}>
-							<Td>{transaction.date}</Td>
-							<Td>{transaction.description}</Td>
-							<Td>{transaction.category}</Td>
-							<Td>{transaction.amount}</Td>
-							<Td>
-								<Button
-									colorScheme={'red'}
-									onClick={() => deleteTransaction(transaction.id)}
-								>
-									DELETE
-								</Button>
-							</Td>
-						</Tr>
-					))}
+					{loading ? (
+						<LoadingState />
+					) : (
+						transactions.map((transaction) => (
+							<Tr key={transaction.id}>
+								<Td>{transaction.date}</Td>
+								<Td>{transaction.description}</Td>
+								<Td>{transaction.category}</Td>
+								<Td>{transaction.amount}</Td>
+								<Td>
+									<Button
+										colorScheme={'red'}
+										onClick={() => deleteTransaction(transaction.id)}
+									>
+										DELETE
+									</Button>
+								</Td>
+							</Tr>
+						))
+					)}
 				</Tbody>
 			</Table>
 		</TableContainer>

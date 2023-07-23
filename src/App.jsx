@@ -9,11 +9,15 @@ import { baseURL } from './constants';
 const App = () => {
 	const [transactions, setTransactions] = useState([]);
 	const [search, setSearch] = useState('');
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		fetch(baseURL)
 			.then((res) => res.json())
-			.then((data) => setTransactions(data));
+			.then((data) => {
+				setTransactions(data);
+				setLoading(false);
+			});
 	}, [transactions]);
 
 	return (
@@ -32,6 +36,7 @@ const App = () => {
 					transactions={transactions.filter((transaction) =>
 						transaction.description.toLowerCase().includes(search.toLowerCase())
 					)}
+					loading={loading}
 				/>
 				<NewTransactionForm />
 			</Flex>
